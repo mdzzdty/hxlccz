@@ -205,39 +205,21 @@ function fretel() {
     }
 }
 
-function fnLogin() {
-    var stuid = $('#telNum').val();
-    var password = $('#password').val();
-    formdata = new FormData();
-    formdata.append('username',stuid);
-    formdata.append('password',password);
-    $.ajax({
-        type: 'POST',
-        data: formdata,
-        url: '/web/vLogin',
-        processData: false,
-        contentType: false,
-        success: function(data) {
-            alert(data);
-        },
-        error: function(e) {
-            alert("服务器出错");
-        }
-    })
-}
-
 //注册
 function fnSignup() {
     var stuid = $('#stuid').val();
+    alert(stuid);
     var name = $('#name').val();
+    alert(name);
     var password1 = $('#password1').val();
     var telnum = $('#telnum').val();
     var password2 = $('#password2').val();
     var sex = $('#sex').val();
-    var exampleInputFile = $('#exampleInputFile').get(0).files[0];
+    var exampleInputFile = $('#exampleInputFile').val;
 
     var rstuid = /^[0-9]{9}$/;
     var testuid = rstuid.test(stuid);
+    alert()
     var retel = /^1[34578]\d{9}$/;
     var tetel = retel.test(telnum);
 
@@ -248,55 +230,38 @@ function fnSignup() {
     var rename = /^.{1,15}$/;
     var tename = rename.test(name);
 
-    // var param = {};
+    var param = {};
 
-    // param.username = stuid;
-    // param.phone = telnum;
-    // param.password = password1;
-    // param.name = name;
-    // param.gender = sex;
-    // param.avatar = exampleInputFile;
-    // param.dept = "计算机";
-
-    var formdata = new FormData();
-    formdata.append("avatar",exampleInputFile);
-    formdata.append("username",stuid);
-    formdata.append("phone",telnum);
-    formdata.append("password",password1);
-    formdata.append("name",name);
-    formdata.append("dept","计算机");
-    formdata.append("gender",sex);
+    param.stuid = stuid;
+    param.telNum = telnum;
+    param.password = password1;
+    param.name = name;
+    param.sex = sex;
+    param.exampleInputFile = exampleInputFile;
+    param.actualWorkingTimePeriod = etime + "";
 
     if (testuid && telnum && tename && tepwd && tepwdequ) {
-        // $.post("/web/regirst",JSON.stringify(param),function(data){
-        // //alert(data);
-        // //只有验证成功返回200才能到这里
-        // if(data.indexOf("success")!=-1)//data就是后台返回的数据
-        // {   
-        //     //alert("登录成功!");
-        //     window.location.href="classRoom";
-        // }
-        // alert("ahahahhah");
- 
-        // });
         $.ajax({
             type: 'POST',
-            data: formdata,
-            url: '/web/regirst',
-            processData: false,
-            contentType: false,
+            data: JSON.stringify(param),
+            contentType: 'application/json',
+            dataType: 'json',
+            url: pageContext + '/wtf/babersignup',
+            async: false,
             success: function(data) {
-                alert("注册成功");
-                $("#myModal").modal("show");
+                if (data > 0)
+                    alert("注册成功")
+                else
+                    alert("注册失败！")
             },
             error: function(e) {
-                alert("服务器出错");
+                alert("system error");
             }
         })
     }
-    alert('ahahah')
-    // $('#myModal').modal('hide');
-    // location.reload(true);
 
-    return true;
+    $('#myModal').modal('hide');
+    location.reload(true);
+
+    return false;
 }
