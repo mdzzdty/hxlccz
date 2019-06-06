@@ -1,0 +1,527 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+
+    <!--css文件 -->
+
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/mainpage.css">
+    <!-- JQuery 文件，在bootstrap.min.js 之前引入-->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单-->
+    <script src="./js/popper.min.js"></script>
+
+    <script src="./js/bootstrap.min.js"></script>
+
+    <script src="./js/mainpage.js"></script>
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        nav {
+            width: 100%;
+            height: 60px;
+        }
+        
+        #hei {
+            width: 100%;
+            height: 600px;
+        }
+        
+        #logo {
+            max-width: 50px;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!--导航栏-->
+    <!-- <div width="100%" height="100px"> -->
+
+
+    <!-- </div> -->
+
+    <!-- log-in moadl -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">登录</h4>
+                </div>
+                <div class="modal-body" id="model-body">
+                    <div class='clearfix' style='margin-bottom: 20px;'></div>
+
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <form class="form-horizontal">
+                            <div class="form-group row">
+                                <label for="telNUm" class="col-sm-3">帐号：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control col-sm-9" id="telNum" />
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-3">密码： </label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control col-sm-9 " id="password" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="userType" class="col-sm-3">类型： </label>
+                                <div class="col-sm-5">
+                                    <select id="userType" class="form-control  ">
+                                            <option value="1" selected>志愿者</option>
+                                            <option value="2">学校组织</option>
+                                            <option value="3">管理员</option>
+                                        </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="button" class="btn btn-primary form-control" data-dismiss="modal">取消</button>
+                                </div>
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="button" class="btn btn-primary form-control">确认</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- <div class='clearfix' style='margin-bottom: 20px;'></div> -->
+                    </div>
+                    <div class=col-sm-2></div>
+                    <div class='clearfix' style='margin-bottom: 20px;'></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--sign-up modal -->
+
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">志愿者注册</h4>
+                </div>
+                <div class="modal-body" id="model-body">
+                    <div class='clearfix' style='margin-bottom: 20px;'></div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <form class="form-horizontal">
+                            <div class="form-group row  has-feedback" id="dstuid">
+                                <label for="stuid" class="col-sm-3">学号<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" onchange="frestuid()" id="stuid" />
+                                    <span id="sstuid"></span>
+                                    <small class=" form-text text-muted"> 请输入9位学号</small>
+                                </div>
+                            </div>
+                            <div class="form-group row has-feedback" id="dname">
+
+                                <label for="name" class=" col-sm-3">姓名<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " onchange="frename()" id="name" /><span aria-hidden="true" id="sname"></span>
+                                    <small class=" form-text text-muted"> 不超过15位</small>
+                                </div>
+                            </div>
+                            <div class="form-group row has-feedback" id="dpassword1">
+                                <label for="password1" class=" col-sm-3">密码<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="password1" onchange="frepassword1()" />
+                                    <span id="spassword1"></span> <small id="passwordHelp1" class=" form-text text-muted">
+                                请输入大写字母、小写字母、数字组成的组合，至少8位，至多16位 </small>
+                                </div>
+                            </div>
+
+                            <div class="form-group row has-feedback" id="dpassword2">
+                                <label for="password2" class=" col-sm-3">确认密码<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input onchange="frepassword2()" type="password" class="form-control" id="password2" placeholder=""><span id="spassword2"></span> <small id="passwordHelp2" class=" form-text text-muted"> 请确认密码
+                            </small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="sex" class=" col-sm-3">性别<span style="color:red">*</span></label>
+                                <div class="col-sm-4">
+                                    <select id="sex" class="form-control">
+                                <option value="m" selected>男生</option>
+                                <option value="f">女生</option>
+                            </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="userType" class="col-sm-3">学院<span style="color:red">*</span> </label>
+                                <div class="col-sm-5">
+                                    <select id="userType" class="form-control  ">
+                                            <option value="1" selected>计算机学院</option>
+                                            <option value="2">汽车学院</option>
+                                            <option value="3">材料学院</option>
+                                            <option value="4">经管学院</option>
+                                            <option value="5">语言文学院</option>
+                                        </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row has-feedback" id="dtelnum">
+                                <label for="telnum" class=" col-sm-3">手机<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " onchange="fretel()" id="telnum" /> <span id="stelnum"></span>
+                                    <small class=" form-text text-muted"> 请输入11位手机号码</small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                                <label for="exampleInputFile" class="col-sm-3">头像</label>
+                                <div class="col-sm-4">
+                                    <input type="file" id="exampleInputFile">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button onclick="fnSignup()" type="button" class="btn btn-primary form-control">确认</button>
+                                </div>
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="button" class="btn btn-primary form-control" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="col-sm-2"></div>
+
+
+
+                    <div class='clearfix' style='margin-bottom: 20px;'></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+    <!-- /.modal -->
+
+    <!-- organizer sign-up -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">组织注册</h4>
+                </div>
+                <div class="modal-body" id="model-body">
+                    <div class='clearfix' style='margin-bottom: 20px;'></div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <form class="form-horizontal" onsubmit="return fnSignup()">
+                            <div class="form-group row has-feedback" id="dtelnum">
+                                <label for="telnum" class=" col-sm-3">手机号<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " onchange="fretel()" id="telnum" /> <span id="stelnum"></span>
+                                    <small class=" form-text text-muted"> 请输入11位手机号码</small>
+                                </div>
+                            </div>
+
+                            <div class="form-group row has-feedback" id="dname">
+
+                                <label for="name" class=" col-sm-3">组织名<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " onchange="frename()" id="name" /><span aria-hidden="true" id="sname"></span>
+                                    <small class=" form-text text-muted"> 请不超过15位</small>
+                                </div>
+                            </div>
+                            <div class="form-group row has-feedback" id="dpassword1">
+                                <label for="password1" class=" col-sm-3">密码<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="password1" onchange="frepassword1()" />
+                                    <span id="spassword1"></span> <small id="passwordHelp1" class=" form-text text-muted">
+                                    请输入大写字母、小写字母、数字组成的组合，至少8位，至多16位 </small>
+                                </div>
+                            </div>
+
+                            <div class="form-group row has-feedback" id="dpassword2">
+                                <label for="password2" class=" col-sm-3">确认密码<span style="color:red">*</span></label>
+                                <div class="col-sm-9">
+                                    <input onchange="frepassword2()" type="password" class="form-control" id="password2" placeholder=""><span id="spassword2"></span> <small id="passwordHelp2" class=" form-text text-muted"> 请确认密码
+                                </small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+
+                                <label for="exampleInputFile" class="col-sm-3">头像</label>
+                                <div class="col-sm-4">
+                                    <input type="file" id="exampleInputFile">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="button" class="btn btn-primary form-control" data-dismiss="modal">取消</button>
+                                </div>
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="button" class="btn btn-primary form-control">确认</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="col-sm-2"></div>
+
+
+
+                    <div class='clearfix' style='margin-bottom: 20px;'></div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                            <span class="sr-only">展开导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                <!-- <img id=s rc="./image/zhifulogo.jpg" width="40px" height="40px" class="img-circle" /> -->
+                <a class="navbar-brand" href="#">哈小威大学生志愿服务系统</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+                <!-- <div class="col-md-5"> -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">主页</a></li>
+                    <li><a href="#">时长录入</a></li>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于我们 <b
+                                            class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">GitHub</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">使用帮助</a></li>
+                            <li class="divider"></li>
+                        </ul>
+
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" />
+                    </div> <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <!-- </div> -->
+                <!-- <div class="col-md-3 "> -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="btn " href="/philosopher/accounts/info/{{ user.id }}"><img id="user-avatar" src="./image/head.jpg" width="20px" height="20px" class="img-circle" />迷雾</a>
+                    </li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal" font-size="40px">登录</a></li>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">注册<b
+                                    class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="showInputDialog()" data-toggle="modal" data-target="#myModal1">志愿者</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" data-toggle="modal" data-target="#myModal2">学校组织</a></li>
+
+                        </ul>
+
+                    </li>
+                    <li><a href="#">退出登录</a></li>
+                </ul>
+
+                </ul>
+                <!-- </div> -->
+        </nav>
+
+        <div class="carousel slide" id="carousel-469842">
+            <ol class="carousel-indicators">
+                <li class="active" data-slide-to="0" data-target="#carousel-469842">
+                </li>
+                <li data-slide-to="1" data-target="#carousel-469842">
+                </li>
+                <li data-slide-to="2" data-target="#carousel-469842">
+                </li>
+            </ol>
+            <div class="carousel-inner" id="hei">
+                <div class="item active">
+                    <img alt="" src="./image/IMG_20190331_092951.jpg" />
+
+                </div>
+                <div class="item">
+                    <img alt="" src="./image/IMG_20190331_093035.jpg" />
+
+                </div>
+                <div class="item">
+                    <img alt="" src="./image/IMG_20190404_172611.jpg" />
+
+                </div>
+            </div> <a class="left carousel-control" href="#carousel-469842" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-469842" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        </div>
+        <!-- <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="activityContent">
+                        <h4 class="title">哈威</h4>
+                        <div class="left_column">
+                            <img src="image\IMG_20190331_092951.jpg" alt="{{ activity }}" title="{{ activity }}" />
+                        </div>
+                        <div class="right_column">
+                            <p class="em06">发起组织： {{ activity.atorganizer.username }}</p>
+                            <p class="descripe">简介：{{ activity.atcontent|truncatechars:40 }}</p>
+                            <p class="signup">报名情况：{{}}/{{}}</p>
+                            <a href="/philosopher/activity/detail/{{ activity.id }}" class="readmore">Read More..</a>
+                            <p><span id="date">申请开始时间：{{ activity.applystart|date:'Y年m月d日' }}</span></p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="activityContent">
+                        <h4 class="title">哈威</h4>
+                        <div class="left_column">
+                            <img src="image\IMG_20190331_092951.jpg" alt="{{ activity }}" title="{{ activity }}" />
+                        </div>
+                        <div class="right_column">
+                            <p class="em06">发起组织： {{ activity.atorganizer.username }}</p>
+                            <p class="descripe">简介：{{ activity.atcontent|truncatechars:40 }}</p>
+                            <p class="signup">报名情况：{{}}/{{}}</p>
+                            <a href="/philosopher/activity/detail/{{ activity.id }}" class="readmore">Read More..</a>
+                            <p><span id="date">申请开始时间：{{ activity.applystart|date:'Y年m月d日' }}</span></p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="activityContent">
+                        <h4 class="title">哈威</h4>
+                        <div class="left_column">
+                            <img src="image\IMG_20190331_092951.jpg" alt="{{ activity }}" title="{{ activity }}" />
+                        </div>
+                        <div class="right_column">
+                            <p class="em06">发起组织： {{ activity.atorganizer.username }}</p>
+                            <p class="descripe">简介：{{ activity.atcontent|truncatechars:40 }}</p>
+                            <p class="signup">报名情况：{{}}/{{}}</p>
+                            <a href="/philosopher/activity/detail/{{ activity.id }}" class="readmore">Read More..</a>
+                            <p><span id="date">申请开始时间：{{ activity.applystart|date:'Y年m月d日' }}</span></p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!--{% endfor %}
+                {% endifequal %}-->
+
+        <!-- <div align="center" style="font-size:1.5em;">
+                <!--{% ifnotequal activities.paginator.num_pages 1 %}
+                {% if activities.has_previous %}-->
+        <!-- <a href="?page={{ activities.previous_page_number }}&q={{ queryValue }}">上一页</a> -->
+        <!--{% endif %}
+                {% for page_number in activities.paginator.page_range %}
+                {% ifequal page_number activities.number %}
+                {{ page_number }}
+                {% else %}-->
+        <!-- <a href="?page={{ page_number }}&q={{ queryValue }}">{{ page_number }}</a> -->
+        <!--{% endifequal %}
+                {% endfor %}
+                {% if activities.has_next %}-->
+        <!-- <a href="?page={{ activities.next_page_number }}&q={{ queryValue }}">下一页</a> -->
+        <!--{% endif %}
+                {% endifnotequal %}-->
+        <!-- </div> -->
+
+
+
+        <!-- <div class="col-md-12 column">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img alt="300x200" src="v3/default4.jpg" />
+                        <div class="caption">
+                            <h3>
+                                Thumbnail label
+                            </h3>
+                            <p>
+                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img alt="300x200" src="v3/default5.jpg" />
+                        <div class="caption">
+                            <h3>
+                                Thumbnail label
+                            </h3>
+                            <p>
+                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img alt="300x200" src="v3/default6.jpg" />
+                        <div class="caption">
+                            <h3>
+                                Thumbnail label
+                            </h3>
+                            <p>
+                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        </div>
+
+
+
+</body>
+
+</html>
