@@ -268,17 +268,6 @@ function fnSignup() {
     formdata.append("gender",sex);
 
     if (testuid && telnum && tename && tepwd && tepwdequ) {
-        // $.post("/web/regirst",JSON.stringify(param),function(data){
-        // //alert(data);
-        // //只有验证成功返回200才能到这里
-        // if(data.indexOf("success")!=-1)//data就是后台返回的数据
-        // {   
-        //     //alert("登录成功!");
-        //     window.location.href="classRoom";
-        // }
-        // alert("ahahahhah");
- 
-        // });
         $.ajax({
             type: 'POST',
             data: formdata,
