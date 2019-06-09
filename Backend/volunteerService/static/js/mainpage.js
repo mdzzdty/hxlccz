@@ -219,6 +219,33 @@ function fnLogin() {
         contentType: false,
         success: function(data) {
             alert(data);
+            window.location.href = '/web/volunteer_main';
+        },
+        error: function(e) {
+            alert("服务器出错");
+        }
+    })
+}
+
+function organSigup() {
+    var telnum = $("#telnum1").val();
+    var name = $("#name1").val();
+    var password = $("#passworda").val();
+    var exampleInputFile = $("#exampleInputFile1").get(0).files[0];
+
+    var formdata = new FormData();
+    formdata.append("avatar",exampleInputFile);
+    formdata.append("phone",telnum);
+    formdata.append("password",password);
+    formdata.append("name",name);
+    $.ajax({
+        type: 'POST',
+        data: formdata,
+        url: '/web/organRegirst',
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            alert(data);
         },
         error: function(e) {
             alert("服务器出错");
@@ -283,7 +310,6 @@ function fnSignup() {
             }
         })
     }
-    alert('ahahah')
     // $('#myModal').modal('hide');
     // location.reload(true);
 

@@ -1,0 +1,173 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+
+    <!--css文件 -->
+
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/mainpage.css">
+    <!-- JQuery 文件，在bootstrap.min.js 之前引入-->
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单-->
+    <script src="/static/js/popper.min.js"></script>
+
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <script src="/static/js/mainpage.js"></script>
+
+    <script src="/static/js/list.js"></script>
+
+    <script src="/static/js/logout.js"></script>
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+
+        #logo {
+            max-width: 50px;
+            max-height: 100%;
+        }
+
+        .footer {
+            width: 100%;
+            height: 50px;
+            background-color: lightgrey;
+            position: relative;
+            bottom: 0px;
+            color: #969696;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 主体 -->
+    <div class="clearfix" style="margin-bottom: 70px;">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="sr-only">展开导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <img id=s rc="/static/image/zhifulogo.jpg" width="40px" height="40px" class="img-circle" /> -->
+                <a class="navbar-brand" href="#">哈小威大学生志愿服务系统</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+                <!-- <div class="col-md-5"> -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" onclick="">主页</a></li>
+                    <li>
+                        <a href="#">新闻</a>
+                    </li>
+                    <li>
+                        <a href="#">我的活动</a>
+                    </li>
+                    <li class="dropdown"> <a href="./scenery.html">美丽工大 </a>
+
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="#" data-toggle="modal" data-target="#myModal" onclick="LogOut()"
+                            font-size="40px">退出</a></li>
+
+                </ul>
+            </div>
+            <!-- </div> -->
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blockContent">
+                    <div class='clearfix' style='margin-bottom: 30px;'></div>
+                    <div class="junbotron well">
+                        <!--
+                            活动列表展示！！！
+                        -->
+                        <div style="position: relative; left: 10px; top: 0px; width: 750px; height: 500px" id="home">
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="home4">
+                        <div class='clearfix' style='margin-bottom: 30px;'></div>
+                        <p id="p"></p>
+                    </div>
+                    <div class="col-md-6 col-md-offset-2" id="home3"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="rightContent">
+
+
+                    <div class="search">
+                        <form action="/philosopher/activity/search/" method="get" class="form-inline">
+                            <div class="form-group">
+                                <input type="text" name="q" value="" class="form-control" placeholder="输入活动名称或创建者" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="搜索" class="form-control" />
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="about_us">
+                        <img src="/static/image/Mine.png">
+                        <p>哈小威大学生志愿服务系统是一个公益活动发布、申请以及管理的平台。为您提供最新最全的公益活动资讯，是你结识更多热心小伙伴、获取更多公益时的最佳选择。</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="rank">
+                        <span class="title">当前最新的活动</span>
+                        <hr>
+                        <ul>
+                            {% for activity in newTen %}
+                            <li>
+                                <a href="/philosopher/activity/detail/{{ activity.id }}">{{ activity }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toTop">
+        <span class="glyphicon glyphicon-eject" aria-hidden="true"></span>
+    </div>
+
+
+
+
+
+    </div>
+
+    </div>
+
+    <div class="footer">
+        <div>
+            © Copyright 2019
+        </div>
+        <div>
+            Powerby <a href="http://chenyvehtung.github.io" target="_blank">Donald</a>, <a
+                href="https://github.com/KevinChen073" target="_blank">Kevin</a>, <a
+                href="http://weibo.com/u/2721089860" target="_blank">Even</a>, <a href="http://120.24.169.4/"
+                target="_blank">Richard</a>, <a href="https://github.com/sophietian1024" target="_blank">Sophie</a>.
+        </div>
+    </div>
+
+</body>
+
+</html>

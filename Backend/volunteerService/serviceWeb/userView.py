@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login
 
 from serviceWeb.functions import user
+import random
 
 def regirst(request):
     if (request.method == 'POST'):
@@ -44,6 +45,7 @@ def regirst(request):
 def organRegirst(request):
     if (request.method == 'POST'):
         try:
+            ran = str(random.randint(100000, 999999))
             username = request.POST.get('username','')
             password = request.POST.get('password','')
             name = request.POST.get('name','')
@@ -53,13 +55,13 @@ def organRegirst(request):
                 'username': username,
                 'password': password,
                 'name': name,
-                'gender': gender,
                 'phone': phone,
-                'dept': dept,
                 'avatar': avatar,
+                'id': ran,
             }
-            if user.regirst(configDict):
-                response = HttpResponse('successful')
+            print(configDict)
+            if user.organRegirst(configDict):
+                response = HttpResponse("组织ID为："+ran)
                 response.status_code = 200
                 return response
             else:

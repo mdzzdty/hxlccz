@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新闻资讯</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/mainpage.css">
+    <!-- JQuery 文件，在bootstrap.min.js 之前引入-->
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单-->
+    <script src="/static/js/popper.min.js"></script>
+
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <script src="/static/js/mainpage.js"></script>
+    <script>
+        $(function() {
+            $(".toTop").click(function(e) {
+                //以1秒的间隔返回顶部
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            $(".toTop").hide();
+            $(window).scroll(function(e) {
+                //若滚动条离顶部大于100元素
+                if ($(window).scrollTop() > 100)
+                    $(".toTop").fadeIn(1000); //以1秒的间隔渐显id=gotop的元素
+                else
+                    $(".toTop").fadeOut(1000); //以1秒的间隔渐隐id=gotop的元素
+            });
+        });
+    </script>
+    <style>
+        .footer {
+            width: 100%;
+            height: 50px;
+            background-color: lightgrey;
+            position: relative;
+            bottom: 0px;
+            color: #969696;
+            text-align: center;
+        }
+        
+        .toTop {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            font-size: 2.5em;
+            position: fixed;
+            bottom: 10%;
+            right: 15%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 12px;
+            padding-top: 10px;
+        }
+        
+        .toTop:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clearfix" style="margin-bottom: 70px;">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">哈小威大学生志愿服务系统</a>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="menu">
+                <!-- <div class="col-md-5"> -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="mainews.html">新闻资讯</a></li>
+
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">美丽工大<b
+                                                    class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">校园风景</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href=""></a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right ">
+
+                    <li><a href="#" data-toggle="modal" data-target="#myModal" font-size="40px">登录</a></li>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">注册<b
+                                            class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="showInputDialog()" data-toggle="modal" data-target="#myModal1">志愿者</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" data-toggle="modal" data-target="#myModal2">学校组织</a></li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-8 column">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img alt="300x200" src="/static/image\H_left.jpg" />
+                            <div class="caption">
+                                <h3>
+                                    Thumbnail label
+                                </h3>
+                                <p>
+                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </p>
+                                <p>
+                                    <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="rightContent">
+
+
+                    <div class="search">
+                        <form action="/philosopher/activity/search/" method="get" class="form-inline">
+                            <div class="form-group">
+                                <input type="text" name="q" value="" class="form-control" placeholder="输入活动名称或创建者" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="搜索" class="form-control" />
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="about_us">
+                        <img src="/static/image/Mine.png">
+                        <p>哈小威大学生志愿服务系统是一个公益活动发布、申请以及管理的平台。为您提供最新最全的公益活动资讯，是你结识更多热心小伙伴、获取更多公益时的最佳选择。</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="rank">
+                        <span class="title">友情链接</span>
+                        <hr>
+                        <ul>
+
+                            <li>
+                                <a href="http://www.hitwh.edu.cn">哈尔滨工业大学（威海）</a>
+
+                            </li>
+                            <li>
+                                <a href="http://www.hit.edu.cn">哈尔滨工业大学</a>
+
+                            </li>
+
+                            <li>
+                                <a href="http://www.sohu.com">搜狐</a>
+
+                            </li>
+                            <li>
+                                <a href="https://www.sina.com.cn">新浪</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div>
+            © Copyright 2019
+        </div>
+        <div>
+            Powerby <a href="http://chenyvehtung.github.io" target="_blank">Donald</a>, <a href="https://github.com/KevinChen073" target="_blank">Kevin</a>, <a href="http://weibo.com/u/2721089860" target="_blank">Even</a>, <a href="http://120.24.169.4/"
+                target="_blank">Richard</a>, <a href="https://github.com/sophietian1024" target="_blank">Sophie</a>.
+        </div>
+    </div>
+    <div class="toTop">
+        <span class="glyphicon glyphicon-eject" aria-hidden="true"></span>
+    </div>
+</body>
+
+</html>

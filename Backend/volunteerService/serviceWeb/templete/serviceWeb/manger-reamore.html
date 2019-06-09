@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>管理员查看活动</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/mainpage.css">
+    <!-- JQuery 文件，在bootstrap.min.js 之前引入-->
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单-->
+    <script src="/static/js/popper.min.js"></script>
+
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <script src="/static/js/mainpage.js"></script>
+
+    <script src="/static/js/readmore.js"></script>
+
+    <script src="/static/js/managerReadMore.js"></script>
+
+</head>
+
+<body>
+    <div class="clearfix" style="margin-bottom: 70px;">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="sr-only">展开导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <img id=s rc="/static/image/zhifulogo.jpg" width="40px" height="40px" class="img-circle" /> -->
+                <a class="navbar-brand" href="#">哈小威大学生志愿服务系统</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+                <!-- <div class="col-md-5"> -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="readmore.html" onclick="">活动详情</a></li>
+
+                </ul>
+                <!-- <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="#" data-toggle="modal" data-target="#myModal" font-size="40px">登录</a></li>
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">注册<b
+                                            class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="showInputDialog()" data-toggle="modal" data-target="#myModal1">志愿者</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" data-toggle="modal" data-target="#myModal2">学校组织</a></li>
+
+                        </ul>
+
+                    </li>
+
+                </ul> -->
+
+            </div>
+            <!-- </div> -->
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="left-board">
+            <div class="inline-block">
+                <button class="btn btn-primary" onclick="accept()" id="openDialog">通过</button>
+                <button class="btn btn-danger" href="">驳回</button>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-offset-2 col-md-6 activityContent">
+                <h2 aligned="center" id=activityname></h2>
+                <table class="table table-hover table-border">
+                    <tbody>
+                        <tr>
+                            <td width="130">发布者：</td>
+                            <td id="organ"> </td>
+                        </tr>
+                        <tr>
+                            <td>限制人数：</td>
+                            <td id="maxNumber"> </td>
+                        </tr>
+                        <tr>
+                            <td>已报名人数：</td>
+                            <td id="number"></td>
+                        </tr>
+                        <tr>
+                            <td>公益时长：</td>
+                            <td id="last"></td>
+                        </tr>
+                        <tr>
+                            <td>申请开始时间:</td>
+                            <td id="start"> </td>
+                        </tr>
+                        <tr>
+                            <td>申请结束时间: </td>
+                            <td id="end"></td>
+                        </tr>
+                        <tr>
+                            <td>活动开始时间: </td>
+                            <td id="acttime"></td>
+                        </tr>
+                        <tr>
+                            <td>活动ID: </td>
+                            <td id="actID"></td>
+                        </tr>
+                        <tr>
+                            <td>备注：</td>
+                            <td id="text"> </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <img id="avatar" alt="">
+            </div>
+            <div class="col-md-4">
+                <div class="rightContent">
+                    <div class="search">
+                        <form action="/philosopher/activity/search/" method="get" class="form-inline">
+                            <div class="form-group">
+                                <input type="text" name="q" value="" class="form-control" placeholder="输入活动名称或创建者" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="搜索" class="form-control" />
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="about_us">
+                        <img src="/static/image/Mine.png">
+                        <p>哈小威大学生志愿服务系统是一个公益活动发布、申请以及管理的平台。为您提供最新最全的公益活动资讯，是你结识更多热心小伙伴、获取更多公益时的最佳选择。</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="rank">
+                        <span class="title">当前最新的活动</span>
+                        <hr>
+                        <ul>
+                            {% for activity in newTen %}
+                            <li>
+                                <a href="/philosopher/activity/detail/{{ activity.id }}">{{ activity }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

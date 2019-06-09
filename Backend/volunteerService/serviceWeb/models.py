@@ -71,6 +71,7 @@ class Activity(models.Model):
     status = models.CharField(db_column='status',max_length=1,choices=STATUS,default=STATUS[0][0])
     number = models.IntegerField(db_column='number',default=0)
     avatar = models.ImageField(db_column='avatar',upload_to='static/image/Activity',blank=True)
+    addr = models.CharField(db_column='addr',max_length=40)
 
     def __str__(self):
         return self.name

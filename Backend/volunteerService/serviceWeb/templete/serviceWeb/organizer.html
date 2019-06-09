@@ -1,194 +1,324 @@
+<!-- <%@page contentType="text/html; charset=UTF-8" language="java"%> -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>学校组织</title>
+    <!-- <style type="text/css">
+body {
+	background-image: url('https://api.ioliu.cn/bing/');
+	background-repeat: no-repeat;
+	background-size: 300% 300%;
+	background-attachment: fixed;
+	background-position: center;
+}
+</style> -->
 
-    <link rel="stylesheet" href="./css/organizer.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>学校组织-活动页</title>
+
+    <link rel="stylesheet" href="/static/css/organizer.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/static/css/mainpage.css"> -->
     <!-- JQuery 文件，在bootstrap.min.js 之前引入-->
-    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
 
     <!-- popper.min.js 用于弹窗、提示、下拉菜单-->
-    <script src="./js/popper.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
 
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/organizer.js"></script>
 
-    <script type="text/javascript" src="./js.organizer.js"></script>
-</head>
+    <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            var pageContext = "${pageContext.request.contextPath}";
+        </script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/store.js"></script>
+
+    </head> -->
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-                        <span class="sr-only">展开导航</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-            <a class="navbar-brand" href="#">哈小威大学生志愿服务系统</a>
-        </div>
-        <div class="collapse navbar-collapse" id="menu">
-            <div class="col-md-7">
+    <div class="clearfix" style="margin-bottom: 70px;">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="sr-only">展开导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">哈小威大学生志愿服务系统</a>
+            </div>
+            <div class="collapse navbar-collapse" id="menu">
+
                 <ul class="nav navbar-nav ">
-                    <li class="active"><a href="#">活动</a></li>
-                    <li><a href="#">新闻</a></li>
+                    <li class="active"><a href="organizer.html">活动</a></li>
+                    <li><a href="news.html">新闻</a></li>
 
                     <!-- <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于我们 <b
-                                        class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">GitHub</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">使用帮助</a></li>
-                                    <li class="divider"></li>
-                                </ul>
-        
-                            </li> -->
+                                                class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">GitHub</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">使用帮助</a></li>
+                                            <li class="divider"></li>
+                                        </ul>
+                
+                                    </li> -->
+                </ul>
+
+                <ul class="nav  navbar-right navbar-nav">
+                    <li><a href="#">退出</a></li>
                 </ul>
             </div>
-            <div class="col-md-2">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <div class="dropdown">
-                            <a class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="/philosopher/accounts/info/{{ user.id }}"><img id="user-avatar" src="" alt="{{ user.username }}" title="{{ user.username }}" /></a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#" data-toggle="modal" data-target="#myModal">我的资料</a></li>
-                                <li><a href="#">退出</a></li>
-                            </ul>
 
-
-                    </li>
-
-
-
-
-                </ul>
-                </div>
-    </nav>
-
+        </nav>
+    </div>
     <div class="container">
-        <div class="col-md-7 col-md-offset-1">
+        <div class="row clearfix">
+            <div class="col-md-2 column">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="activityContent">
-                        <h4 class="title">哈威</h4>
-                        <div class="left_column">
-                            <img src="image\IMG_20190331_092951.jpg" alt="{{ activity }}" title="{{ activity }}" />
-                        </div>
-                        <div class="right_column">
-
-                            <p class="descripe">简介：{{ activity.atcontent|truncatechars:40 }}</p>
-                            <p class="signup">报名情况：{{}}/{{}}</p>
-
-                            <p><span id="date">申请开始时间：{{ activity.applystart|date:'Y年m月d日' }}</span></p>
-                            <button type="button" class="btn btn-success">审核中</button>
-                            <button type="button" class="btn btn-info"><a href="#"></a>编辑</button>
-                        </div>
-                        <div class="clear"></div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">资料</h3>
+                    </div>
+                    <div class="panel-body">
+                        <img alt="140x140" src="C:\\workspace\\default3.jpg" class="img-circle" />
+                        <h3 id="sinfoh3"></h3>
+                        <p id="sinfop1"></p>
+                        <button class="btn btn-danger" id="addbaber" data-toggle="modal"
+                            data-target="#myModal">修改</button>
                     </div>
                 </div>
+
             </div>
-            <hr>
 
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="activityContent">
-                        <h4 class="title">哈威</h4>
-                        <div class="left_column">
-                            <img src="image\IMG_20190331_092951.jpg" alt="{{ activity }}" title="{{ activity }}" />
-                        </div>
-                        <div class="right_column">
-
-                            <p class="descripe">简介：{{ activity.atcontent|truncatechars:40 }}</p>
-                            <p class="signup">报名情况：{{}}/{{}}</p>
-
-                            <p><span id="date">申请开始时间：{{ activity.applystart|date:'Y年m月d日' }}</span></p>
-                            <button type="button" class="btn btn-success">审核中</button>
-                            <button type="button" class="btn btn-info"><a href="#"></a>编辑</button>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+            <div class="col-md-10 column " id="activity">
+                <div class="col-md-12 column well well-sm">
+                    <ul id="myTab" class="nav nav-pills">
+                        <li class="active"><a href="#home1" data-toggle="tab">已发布</a></li>
+                        <li class=""><a href="#home2" data-toggle="tab">待审核</a></li>
+                        <li class=""><a href="#home5" data-toggle="tab">报名中</a></li>
+                        <li class=""><a href="#home6" data-toggle="tab">历史活动</a></li>
+                        <li class=""><a href="#home7" data-toggle="tab">添加</a></li>
+                    </ul>
                 </div>
-            </div>
-            <hr>
-        </div>
+                <div id="myTabContent" class="tab-content ">
 
-        <div class="col-md-2 col-md-offset-1">
-            <button type="button" class="btn btn-primary"><a href="#"></a>报名中</button><br/>
-            <button type="button" class="btn btn-warning"><a href="#"></a>待审核</button><br/>
-            <button type="button" class="btn btn-warning"><a href="#"></a>已结束</button>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title text-center" id="myModalLabel">信息</h4>
+                    <div class="tab-pane fade in active " id="home1">
+                        <div class="well">
+                            <div style="position: relative; left: 10px; top: 0px; width: 750px; height: 500px"
+                                id="qhome1"></div>
+                        </div>
+                        <div class="col-md-4" id="qhome4">
+                            <div class='clearfix' style='margin-bottom: 30px;'></div>
+                            <p id="p"></p>
+                        </div>
+                        <div class="col-md-6 col-md-offset-2" id="qhome3"></div>
                     </div>
-                    <div class="modal-body" id="model-body">
-                        <div class='clearfix' style='margin-bottom: 20px;'></div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-8">
+                    <div class="tab-pane fade  " id="home7">
+                        <div class="well well-lg">
+
                             <form class="form-horizontal" onsubmit="return fnSignup()">
+
+                                <div class="form-group row has-feedback" id="dpassword2">
+                                    <label for="actime" class="col-md-2 col-md-offset-2">活动开始时间</label>
+                                    <div class="col-md-4" id=actime>
+                                        <input type="datetime-local" id="stactime">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row  has-feedback" id="dname">
+                                    <label for="baotime" class=" col-md-2 col-md-offset-2">报名时间</label>
+                                    <div class="col-md-6" id="baotime">
+
+                                        <input type="datetime-local" id="stbatime">
+                                        <span>—</span>
+                                        <input type="datetime-local" id="enbotime">
+                                    </div>
+                                </div>
+
                                 <div class="form-group row has-feedback" id="dtelnum">
-                                    <label for="telnum" class=" col-sm-3">手机：</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control " onchange="fretel()" id="telnum" /> <span id="stelnum"></span>
-                                        <!-- <small class=" form-text text-muted"> 请输入11位手机号码</small> -->
+                                    <label for="actname" class="col-md-2 col-md-offset-2">活动名称</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="actname" placeholder="">
+                                        </small>
                                     </div>
                                 </div>
 
-                                <div class="form-group row has-feedback" id="dname">
-
-                                    <label for="name" class=" col-sm-3">组织：</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control " onchange="frename()" id="name" /><span aria-hidden="true" id="sname"></span>
-                                        <!-- <small class=" form-text text-muted"> 请不超过15位</small> -->
+                                <div class="form-group row has-feedback" id="dpassword1">
+                                    <label for="peonum" class=" col-md-2 col-md-offset-2">活动人数</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="peonum" placeholder="">
                                     </div>
                                 </div>
 
 
 
+                                <div class="form-group row has-feedback" id="dpassword3">
+                                    <label for="actime" class="col-md-2 col-md-offset-2">活动时长</label>
+                                    <div class="col-md-4" id=actime>
+                                        <input type="text" id="timelen"><span>h</span>
+                                    </div>
+                                </div>
 
 
-                                <!-- <div class="form-group row has-feedback" id="dhead">
-                                            <label for="telnum" class=" col-sm-3">上传头像</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control " onchange="fretel()" id="telnum" /> <span id="stelnum"></span>
-                                                <small class=" form-text text-muted"> </small>
-                                            </div>
-                                        </div> -->
+
+                                <div class="form-group row has-feedback" id="dactaddr">
+                                    <label for="actaddr" class=" col-md-2 col-md-offset-2">活动地点</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="actaddr" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row  has-feedback" id="dname">
+                                    <label for="xupict" class="col-md-2 col-md-offset-2">宣传图片</label>
+                                    <div class="col-md-4">
+                                        <input type="file" id="exampleInputFile">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row  has-feedback" id="dname">
+                                    <label for="actintro" class=" col-md-2 col-md-offset-2">活动简述</label>
+                                    <div class="col-md-6">
+                                        <textarea type="text" class="form-control" rows="6" cols="20" id="actintro">
+                                                </textarea>
+                                    </div>
+                                </div>
+                                <div class='clearfix' style='margin-bottom: 30px;'></div>
+                                <div class="form-group row">
+                                    <div class="col-md-offset-4 col-md-4 ">
+                                        <button type="submit" id="signupcheck"
+                                            class="btn btn-primary btn-lg btn-block">提交</button>
+                                    </div>
+                                </div>
                             </form>
-
-                        </div>
-                        <div class="col-sm-2"></div>
-
-
-
-                        <div class='clearfix' style='margin-bottom: 20px;'></div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="col-sm-3 col-sm-offset-2">
-                            <button type="button" class="btn btn-primary form-control">修改</button>
-                        </div>
-                        <div class="col-sm-3 col-sm-offset-2">
-                            <button type="button" class="btn btn-primary form-control">确认</button>
                         </div>
 
                     </div>
+                    <div class="tab-pane fade  " id="home2">
+                        <div class="well">
+                            <div style="position: relative; left: 10px; top: 0px; width: 750px; height: 500px"
+                                id="shome1"></div>
+                        </div>
+                        <div class="col-md-4" id="shome4">
+                            <div class='clearfix' style='margin-bottom: 30px;'></div>
+                            <p id="p"></p>
+                        </div>
+                        <div class="col-md-6 col-md-offset-2" id="shome3"></div>
+                    </div>
+
+                    <div class="tab-pane fade  " id="home5">
+                        <div class="well">
+                            <div style="position: relative; left: 10px; top: 0px; width: 750px; height: 500px"
+                                id="dhome1"></div>
+                        </div>
+                        <div class="col-md-4" id="dhome4">
+                            <div class='clearfix' style='margin-bottom: 30px;'></div>
+                            <p id="p"></p>
+                        </div>
+                        <div class="col-md-6 col-md-offset-2" id="dhome3"></div>
+                    </div>
+
+                    <div class="tab-pane fade  " id="home6">
+                        <div class="well">
+                            <div style="position: relative; left: 10px; top: 0px; width: 750px; height: 500px"
+                                id="phome1"></div>
+                        </div>
+                        <div class="col-md-4" id="phome4">
+                            <div class='clearfix' style='margin-bottom: 30px;'></div>
+                            <p id="p"></p>
+                        </div>
+                        <div class="col-md-6 col-md-offset-2" id="phome3"></div>
+                    </div>
+
+
+
                 </div>
-                <!-- /.modal-content -->
             </div>
+
+
+
         </div>
+
+    </div>
+
+    <!-- Modal -->
+    <!-- xiugai modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">信息</h4>
+                </div>
+                <div class="modal-body" id="model-body">
+                    <div class='clearfix' style='margin-bottom: 20px;'></div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <form class="form-horizontal" onsubmit="return fnSignup()">
+                            <div class="form-group row has-feedback" id="dtelnum">
+                                <label for="telnum" class=" col-sm-3">手机：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " onchange="fretel()" id="telnum" /> <span
+                                        id="stelnum"></span>
+                                    <small class=" form-text text-muted"> 请输入11位手机号码</small>
+                                </div>
+                            </div>
+
+                            <div class="form-group row has-feedback" id="dname">
+
+                                <label for="name" class=" col-sm-3">组织名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control " onchange="frename()" id="name" /><span
+                                        aria-hidden="true" id="sname"></span>
+                                    <small class=" form-text text-muted"> 请不超过15位</small>
+                                </div>
+                            </div>
+
+                            <div class="form-group row has-feedback" id="dhead">
+                                <label for="telnum" class=" col-sm-3">上传头像</label>
+                                <div class="col-sm-4">
+                                    <input type="file" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="button" class="btn btn-primary form-control"
+                                        data-dismiss="modal">取消</button>
+                                </div>
+                                <div class="col-sm-3 col-sm-offset-2">
+                                    <button type="button" class="btn btn-primary form-control">确认</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="col-sm-2"></div>
+
+
+
+                    <div class='clearfix' style='margin-bottom: 20px;'></div>
+                </div>
+                <div class="modal-footer">
+
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+
+
+
+
 </body>
 
 </html>
